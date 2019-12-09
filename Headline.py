@@ -3,7 +3,7 @@ import hashlib
 class Headline:
     def __init__(self,
             text,
-            datetime,
+            datetime_published,
             publisher,
             link,
             author=None,
@@ -12,7 +12,7 @@ class Headline:
             image_credit=None,
             **kwargs):
         self.text = text
-        self.datetime = datetime
+        self.datetime_published = datetime_published
         self.publisher = publisher
         self.link = link
         self.author = author
