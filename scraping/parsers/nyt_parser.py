@@ -1,6 +1,9 @@
 import sys
 sys.path.append('../../')
 
+from datetime import datetime
+from time import mktime
+
 from Headline import Headline
 from scraping.parsers import parse_errors
 
@@ -14,7 +17,7 @@ def parse(item):
     else:
         raise parse_errors.MissingAttributeError('Missing attribute: `title`')
     if 'published_parsed' in item:
-        datetime = item['published_parsed']
+        datetime_published = datetime.fromtimestamp(mktime(item['published_parsed']))
     else:
         raise parse_errors.MissingAttributeError('Missing attribute: `published_parsed`')
     if 'id' in item:
@@ -39,7 +42,7 @@ def parse(item):
 
     return Headline(
             text=text,
-            datetime=datetime,
+            datetime_published=datetime_published,
             publisher=PUBLISHER,
             link=link,
             author=author,
